@@ -88,7 +88,7 @@ jobs:
     - name: 导入补丁和配置 & 下载文件
       run: |
         [ -e files ] && mv files openwrt/files
-        cat configs/rax3000m-emmc.config >> openwrt/.config
+        cat configs/my-rax3000m-emmc.config >> openwrt/.config
         cd openwrt
         chmod +x $GITHUB_WORKSPACE/$CLASH_CORE && $GITHUB_WORKSPACE/$CLASH_CORE
         make defconfig
