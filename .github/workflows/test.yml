@@ -125,6 +125,7 @@ jobs:
           sed -i 's/26000000/52000000/g' openwrt/target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7981-cmcc-rax3000m-emmc.dts
           grep max-frequency openwrt/target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7981-cmcc-rax3000m-emmc.dts
       elseif：env.USE_MHZ == '13MHZ' then
+        run: |
           sed -i 's/26000000/13000000/g' openwrt/target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7981-cmcc-rax3000m-emmc.dts
           grep max-frequency openwrt/target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7981-cmcc-rax3000m-emmc.dts
       fi
