@@ -1,32 +1,27 @@
 on:
   workflow_dispatch:
     inputs:
-      logLevel:
+      USE_MTWIFI_CFG:
+        description: 'Use mtwifi-cfg'
+        required: true
+        default: true
+        type: boolean
+      USE_NX30PRO_EEPROM:
+        description: 'Use nx30pro eeprom'
+        required: true
+        default: true
+        type: boolean
+      USE_52MHZ:
+        description: 'Use 52MHz max-frequency'
+        required: true
+        default: true
+        type: boolean
+      USE_MHZ:
         description: 'Log level'
         required: true
         default: 'warning'
         type: choice
         options:
-          - info
-          - warning
-          - debug
-      print_tags:
-        description: 'True to print to STDOUT'
-        required: true
-        type: boolean
-      tags:
-        description: 'Test scenario tags'
-        required: true
-        type: string
-      environment:
-        description: 'Environment to run tests against'
-        type: environment
-        required: true
-
-jobs:
-  print-tag:
-    runs-on: ubuntu-latest
-    if:  ${{ inputs.print_tags }} 
-    steps:
-      - name: Print the input tag to STDOUT
-        run: echo  The tags are ${{ inputs.tags }} 
+          - 52MHZ
+          - 52MHZ
+          - 13MHZ
