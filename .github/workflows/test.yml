@@ -119,16 +119,14 @@ jobs:
         sed -i 's#./files/mt7981-default-eeprom/MT7981_iPAiLNA_EEPROM.bin##' openwrt/package/mtk/drivers/mt_wifi/Makefile
 
     - name: 设置 dts 闪存频率
-      if: env.USE_MHZ == '13MHZ' then
+      if: env.USE_MHZ == '52MHZ' then
         run: |
-          #sed -i -e '/bus-width = <8>;/ a\	cap-mmc-highspeed;' openwrt/target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7981-cmcc-rax3000m-emmc.dts
-          sed -i 's/13000000/52000000/g' openwrt/target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7981-cmcc-rax3000m-emmc.dts
-          grep max-frequency openwrt/target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7981-cmcc-rax3000m-emmc.dts
-      elseif：env.USE_MHZ == '26MHZ' then
+          sed -i -e '/bus-width = <8>;/ a\	cap-mmc-highspeed;' openwrt/target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7981-cmcc-rax3000m-emmc.dts
           sed -i 's/26000000/52000000/g' openwrt/target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7981-cmcc-rax3000m-emmc.dts
           grep max-frequency openwrt/target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7981-cmcc-rax3000m-emmc.dts
-      else
-      
+      elseif：env.USE_MHZ == '13MHZ' then
+          sed -i 's/26000000/13000000/g' openwrt/target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7981-cmcc-rax3000m-emmc.dts
+          grep max-frequency openwrt/target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7981-cmcc-rax3000m-emmc.dts
       fi
 
     - name: 下载文件
