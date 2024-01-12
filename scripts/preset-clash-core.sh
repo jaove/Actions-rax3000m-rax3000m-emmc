@@ -38,3 +38,10 @@ COUNTRY_LITE_URL=https://raw.githubusercontent.com/alecthw/mmdb_china_ip_list/re
 # COUNTRY_FULL_URL=https://raw.githubusercontent.com/alecthw/mmdb_china_ip_list/release/Country.mmdb
 wget -qO- $COUNTRY_LITE_URL > files/etc/openclash/Country.mmdb
 # wget -qO- $COUNTRY_FULL_URL > files/etc/openclash/Country.mmdb
+
+#下载使用新版openclash
+wget  -qO- https://github.com/vernesong/OpenClash/archive/master.zip > temp.zip
+unzip temp.zip
+cp -r OpenClash-master/luci-app-openclash package/
+rm -rf OpenClash-master
+rm -rf temp.zip
