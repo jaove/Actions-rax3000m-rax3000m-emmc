@@ -96,6 +96,7 @@ jobs:
         git config --global user.name "github-actions[bot]"
         #git fetch https://github.com/padavanonly/immortalwrt-mt798x
         #git merge FETCH_HEAD
+        chmod +x $GITHUB_WORKSPACE/$CLASH_CORE && $GITHUB_WORKSPACE/$CLASH_CORE
         ./scripts/feeds update -a && ./scripts/feeds install -a        
         chmod +x $GITHUB_WORKSPACE/$DIY_SH && $GITHUB_WORKSPACE/$DIY_SH
         chmod +x $GITHUB_WORKSPACE/$DIY_PART1_SH && $GITHUB_WORKSPACE/$DIY_PART1_SH
@@ -140,7 +141,7 @@ jobs:
     - name: 下载文件
       run: |
         cd openwrt
-        chmod +x $GITHUB_WORKSPACE/$CLASH_CORE && $GITHUB_WORKSPACE/$CLASH_CORE
+        #chmod +x $GITHUB_WORKSPACE/$CLASH_CORE && $GITHUB_WORKSPACE/$CLASH_CORE
         make defconfig
         make download -j8 V=10
         find dl -size -1024c -exec ls -l {} \;
