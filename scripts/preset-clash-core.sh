@@ -25,12 +25,23 @@ mkdir -p files/etc/openclash/core
 #wget -qO- $CLASH_TUN_URL | gunzip -c > files/etc/openclash/core/clash_tun
 #wget -qO- $CLASH_META_URL | gunzip -c > files/etc/openclash/core/clash_meta
 
+
+#master分支内核
 # dev内核
-CLASH_DEV_URL="https://raw.githubusercontent.com/vernesong/OpenClash/core/master/dev/clash-linux-arm64.tar.gz"
+#CLASH_DEV_URL="https://raw.githubusercontent.com/vernesong/OpenClash/core/master/dev/clash-linux-arm64.tar.gz"
 # premium内核
-CLASH_TUN_URL="https://raw.githubusercontent.com/vernesong/OpenClash/core/master/premium/clash-linux-arm64-2023.08.17-13-gdcc8d87.gz"
+#CLASH_TUN_URL="https://raw.githubusercontent.com/vernesong/OpenClash/core/master/premium/clash-linux-arm64-2023.08.17-13-gdcc8d87.gz"
 # Meta内核版本
-CLASH_META_URL="https://raw.githubusercontent.com/vernesong/OpenClash/core/master/meta/clash-linux-arm64.tar.gz"
+#CLASH_META_URL="https://raw.githubusercontent.com/vernesong/OpenClash/core/master/meta/clash-linux-arm64.tar.gz"
+
+#DEV分支内核
+# dev内核
+CLASH_DEV_URL="https://github.com/vernesong/OpenClash/raw/core/dev/dev/clash-linux-amd64.tar.gz"
+# premium内核
+CLASH_TUN_URL="https://github.com/vernesong/OpenClash/raw/core/dev/premium/clash-linux-arm64-2023.08.17-13-gdcc8d87.gz"
+# Meta内核版本
+CLASH_META_URL="https://github.com/vernesong/OpenClash/raw/core/dev/meta/clash-linux-amd64.tar.gz"
+
 
 #wget -qO- $CLASH_DEV_URL > temp.tar.gz && tar xf temp.tar.gz && mv clash files/etc/openclash/core && rm temp.tar.gz
 #wget -qO- $CLASH_TUN_URL > temp.gz && gunzip  temp.gz && mv temp files/etc/openclash/core/clash_tun
@@ -67,9 +78,16 @@ wget -qO- $COUNTRY_LITE_URL > files/etc/openclash/Country.mmdb
 #wget -qO- $chnr6_custom_url > files/etc/openclash/china_ip6_route.ipset
 #wget -qO- $cndomain_custom_url > files/etc/openclash/accelerated-domains.china.conf
 
-#下载使用新版openclash
-wget  -qO- https://github.com/vernesong/OpenClash/archive/master.zip > temp.zip
+#下载使用master版本openclash
+#wget  -qO- https://github.com/vernesong/OpenClash/archive/master.zip > temp.zip
+#unzip -q temp.zip
+#cp -r OpenClash-master/luci-app-openclash package/
+#rm -rf OpenClash-master
+#rm -rf temp.zip
+
+#下载使用dev版本openclash
+wget  -qO-  wget https://codeload.github.com/vernesong/OpenClash/zip/refs/heads/dev > temp.zip
 unzip -q temp.zip
-cp -r OpenClash-master/luci-app-openclash package/
-rm -rf OpenClash-master
+cp -r OpenClash-dev/luci-app-openclash package/
+rm -rf OpenClash-dev
 rm -rf temp.zip
