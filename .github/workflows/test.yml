@@ -97,6 +97,7 @@ jobs:
         #git fetch https://github.com/padavanonly/immortalwrt-mt798x
         #git merge FETCH_HEAD
         chmod +x $GITHUB_WORKSPACE/$CLASH_CORE && $GITHUB_WORKSPACE/$CLASH_CORE
+        rm -rf package/istore
         ./scripts/feeds update -a && ./scripts/feeds install -a        
         chmod +x $GITHUB_WORKSPACE/$DIY_SH && $GITHUB_WORKSPACE/$DIY_SH
         chmod +x $GITHUB_WORKSPACE/$DIY_PART1_SH && $GITHUB_WORKSPACE/$DIY_PART1_SH
