@@ -36,7 +36,9 @@ on:
           - 52MHZ
 
 env:
+  #hanwckf仓库
   #REPO_URL: https://github.com/hanwckf/immortalwrt-mt798x
+  #237仓库
   REPO_URL: https://github.com/padavanonly/immortalwrt-mt798x
   FREE_DISK_SH: scripts/free_disk_space.sh
   ENV_SH: scripts/environment.sh
@@ -96,7 +98,9 @@ jobs:
         git config --global user.name "github-actions[bot]"
         #git fetch https://github.com/padavanonly/immortalwrt-mt798x
         #git merge FETCH_HEAD
+        #下载openclash和core
         chmod +x $GITHUB_WORKSPACE/$CLASH_CORE && $GITHUB_WORKSPACE/$CLASH_CORE
+        #删除237仓库的istore包，不集成istore
         rm -rf ./package/istore
         ./scripts/feeds update -a && ./scripts/feeds install -a        
         chmod +x $GITHUB_WORKSPACE/$DIY_SH && $GITHUB_WORKSPACE/$DIY_SH
